@@ -1,0 +1,14 @@
+[Unit]
+Description=Monitor SMB Password database for changes, reload radiusd config
+After=multi-user.target
+
+[Service]
+Type=idle
+User=root
+Group=root
+ExecStart=/sbin/radiusdmon > /var/log/radiusdmon.log 2>&1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
